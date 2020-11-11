@@ -25,6 +25,8 @@ export const DetailsScreen = ({navigation}) => {
   // state hooks
   const [ name, setName ] = useState('');
   const [ description, setDescription ] = useState('');
+  const [ latitude, setLatitude ] = useState('');
+  const [ longitude, setLongitude ] = useState('');
   const [data, setData] = useState([]);
 
   const saveData = async () => {
@@ -32,7 +34,9 @@ export const DetailsScreen = ({navigation}) => {
     // create location object
     let location = {
       name: name, 
-      description: description
+      description: description,
+      latitude: latitude,
+      longitude: longitude
     };
 
     // fetch current stored locations from AsyncStorage
@@ -67,10 +71,9 @@ export const DetailsScreen = ({navigation}) => {
       />
       <Divider />
       <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ width: '90%' }}>
+        <View style={{ width: '90%', flexDirection: 'column', justifyContent: 'space-evenly', height: '50%' }}>
           <Input
             placeholder='name'
-            style={{ paddingBottom: 20 }}
             value={name}
             onChangeText={(text) => setName(text)}
           />
@@ -78,6 +81,16 @@ export const DetailsScreen = ({navigation}) => {
             placeholder='description'
             value={description}
             onChangeText={(text) => setDescription(text)}
+          />
+          <Input
+            placeholder='latitude (0.000000)'
+            value={latitude}
+            onChangeText={(text) => setLatitude(text)}
+          />
+          <Input
+            placeholder='longitude (0.000000)'
+            value={longitude}
+            onChangeText={(text) => setLongitude(text)}
           />
         </View>
         <View style={{ position: 'absolute', bottom: 0, alignItems: 'center', marginBottom: 20 }}>

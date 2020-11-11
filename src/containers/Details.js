@@ -27,7 +27,7 @@ export const DetailsScreen = ({navigation}) => {
   const [ description, setDescription ] = useState('');
   const [ latitude, setLatitude ] = useState('');
   const [ longitude, setLongitude ] = useState('');
-  const [data, setData] = useState([]);
+  const [ data, setData ] = useState([]);
 
   const saveData = async () => {
 
@@ -52,7 +52,7 @@ export const DetailsScreen = ({navigation}) => {
     // check if the location object is empty
     if(storedData === null) {
       // save location object and store in AsyncStorage
-      await AsyncStorage.setItem('myObject', JSON.stringify(location));
+      await AsyncStorage.setItem('myObject', JSON.stringify(arrData));
       navigation.navigate("Home");
     } else {
       // save and add new location object to new array

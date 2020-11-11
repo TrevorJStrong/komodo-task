@@ -23,7 +23,6 @@ export const HomeScreen = ({navigation}) => {
   const [items, setItem] = useState([]);
   
   useEffect(() => {
-    // AsyncStorage.clear()
     // add nvigation focus listener so when a user saves a location
     // it will automatically show without having to refresh
     const add_listener = navigation.addListener('focus', () => {

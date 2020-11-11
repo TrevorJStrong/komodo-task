@@ -39,6 +39,9 @@ export const DetailsScreen = ({navigation}) => {
       longitude: longitude
     };
 
+    // add location object to array
+    const arrData = [location];
+
     // fetch current stored locations from AsyncStorage
     const storedData = await AsyncStorage.getItem('myObject');
     console.log(storedData);
@@ -55,7 +58,7 @@ export const DetailsScreen = ({navigation}) => {
       await AsyncStorage.setItem('myObject', JSON.stringify(arrData));
       navigation.navigate("Home");
     } else {
-      // save and add new location object to new array
+      // save and update the locations_array with the previous data + with the new location object
       locations_array = [...storedDataParsed, location];
       await AsyncStorage.setItem('myObject', JSON.stringify(locations_array));
       navigation.navigate("Home");
